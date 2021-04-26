@@ -34,13 +34,27 @@
               </div>
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Login</a>
-                <a class="nav-item nav-link" href="#">Register</a>
+                
+                <a class="nav-item nav-link" href="{% url 'post_new' %}">+ New Blog Post</a>
+               
+                
               </div>
             </div>
           </div>
         </nav>
-      </header>
+    </header>
+    	{% if user.is_authenticated %}
+            <p>Hi {{ user.username }}!</p>
+            <p><a href="{% url 'logout' %}">Log out</a></p>
+        {% else %}
+            <p>You are not logged in.</p>
+            <a href="{% url 'login' %}">Log In</a>
+        {% endif %}
+
+        
+        
+
+     
       <main role="main" class="container">
         <div class="row">
           <div class="col-md-8">
